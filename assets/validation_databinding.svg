@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 540" width="100%" height="100%">
+  <defs>
+    <linearGradient id="valBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a101d" />
+      <stop offset="100%" stop-color="#191932" />
+    </linearGradient>
+    <linearGradient id="valHeader" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669" />
+      <stop offset="100%" stop-color="#0284c7" />
+    </linearGradient>
+    <filter id="vShadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="6" stdDeviation="5" flood-color="#000" flood-opacity="0.4" />
+    </filter>
+    <marker id="vArrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8" />
+    </marker>
+    <marker id="vArrowGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#34d399" />
+    </marker>
+    <marker id="vArrowRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#f87171" />
+    </marker>
+  </defs>
+
+  <rect width="1080" height="540" rx="14" fill="url(#valBg)" stroke="#1e293b" stroke-width="2" />
+
+  <!-- Header -->
+  <rect x="30" y="20" width="1020" height="42" rx="8" fill="url(#valHeader)" />
+  <text x="50" y="47" font-family="'Plus Jakarta Sans', sans-serif" font-size="16" font-weight="800" fill="#ffffff">🛡️ DATABINDING &amp; BEAN VALIDATION PIPELINE (JSR-380 &amp; STANDARDIZED API RESPONSE)</text>
+  <text x="830" y="47" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="700" fill="#ecfdf5">Fail-Fast &amp; Clean Response</text>
+
+  <!-- Left: Pipeline Flow -->
+  <g transform="translate(30, 80)" filter="url(#vShadow)">
+    <rect width="530" height="430" rx="10" fill="#131c31" stroke="#253556" stroke-width="1.5" />
+    <rect width="530" height="34" rx="10" fill="#1e293b" />
+    <text x="20" y="23" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="700" fill="#34d399">🔄 Quy Trình Xử Lý DataBinding &amp; Tự Động Kích Hoạt Validator</text>
+
+    <!-- Step 1: HTTP Request -->
+    <rect x="20" y="55" width="490" height="55" rx="6" fill="#0f172a" stroke="#38bdf8" />
+    <text x="35" y="77" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="700" fill="#38bdf8">1. Client Request (JSON Body / Form Params)</text>
+    <text x="35" y="96" font-family="'JetBrains Mono', monospace" font-size="10" fill="#cbd5e1">POST /api/v1/products • Content-Type: application/json • { "name": "", "price": -5 }</text>
+
+    <!-- Arrow down -->
+    <path d="M 265 110 L 265 125" fill="none" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#vArrow)" />
+
+    <!-- Step 2: DataBinder & Converter -->
+    <rect x="20" y="130" width="490" height="60" rx="6" fill="#1e293b" stroke="#334155" />
+    <text x="35" y="152" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="700" fill="#fbbf24">2. WebDataBinder &amp; HttpMessageConverter (Jackson)</text>
+    <text x="35" y="172" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="#cbd5e1">Chuyển đổi chuỗi JSON raw thành đối tượng Java DTO tương ứng.</text>
+
+    <!-- Arrow down -->
+    <path d="M 265 190 L 265 205" fill="none" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#vArrow)" />
+
+    <!-- Step 3: Hibernate Validator -->
+    <rect x="20" y="210" width="490" height="70" rx="6" fill="#1e1b4b" stroke="#818cf8" />
+    <text x="35" y="232" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="700" fill="#a5b4fc">3. Kích Hoạt Kiểm Tra Hợp Lệ (@Valid / @Validated)</text>
+    <text x="35" y="252" font-family="'JetBrains Mono', monospace" font-size="10.5" fill="#c7d2fe">@NotNull • @NotBlank • @Size(min=3, max=50) • @Min(1) • @Email • @Pattern</text>
+    <text x="35" y="270" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="#e2e8f0">Nếu vi phạm bất kỳ annotation nào -&gt; Sinh FieldError với Message tương ứng.</text>
+
+    <!-- Split Arrow -->
+    <path d="M 160 280 L 160 305" fill="none" stroke="#34d399" stroke-width="2.5" marker-end="url(#vArrowGreen)" />
+    <path d="M 370 280 L 370 305" fill="none" stroke="#f87171" stroke-width="2.5" marker-end="url(#vArrowRed)" />
+
+    <!-- Step 4A: Valid OK -->
+    <rect x="20" y="310" width="235" height="100" rx="6" fill="#064e3b" stroke="#10b981" />
+    <text x="137" y="335" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="700" fill="#34d399" text-anchor="middle">✅ HỢP LỆ (VALID)</text>
+    <text x="137" y="358" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="#ecfdf5" text-anchor="middle">Đi tiếp vào Service</text>
+    <text x="137" y="378" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="#a7f3d0" text-anchor="middle">Thực thi Business Logic</text>
+    <text x="137" y="396" font-family="'JetBrains Mono', monospace" font-size="10" fill="#6ee7b7" text-anchor="middle">Return 200 / 201 JSON</text>
+
+    <!-- Step 4B: Invalid Error -->
+    <rect x="275" y="310" width="235" height="100" rx="6" fill="#4c0519" stroke="#f43f5e" />
+    <text x="392" y="335" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="700" fill="#f87171" text-anchor="middle">❌ VI PHẠM (INVALID)</text>
+    <text x="392" y="358" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="#fecdd3" text-anchor="middle">Ném MethodArgNotValidEx</text>
+    <text x="392" y="378" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="#fda4af" text-anchor="middle">@RestControllerAdvice bắt lại</text>
+    <text x="392" y="396" font-family="'JetBrains Mono', monospace" font-size="10" fill="#fca5a5" text-anchor="middle">Return 400 Bad Request</text>
+  </g>
+
+  <!-- Right: Standardized Response & Comparison -->
+  <g transform="translate(590, 80)" filter="url(#vShadow)">
+    <rect width="460" height="430" rx="10" fill="#131c31" stroke="#253556" stroke-width="1.5" />
+    <rect width="460" height="34" rx="10" fill="#1e293b" />
+    <text x="20" y="23" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="700" fill="#38bdf8">📦 Cấu Trúc DataResponse&lt;T&gt; Chuẩn Hóa Toàn Hệ Thống</text>
+
+    <!-- JSON Response Code Box -->
+    <rect x="15" y="48" width="430" height="185" rx="8" fill="#0f172a" stroke="#334155" />
+    <text x="25" y="70" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700" fill="#fb923c">// JSON Chuẩn Hóa Trả Về Frontend (Thành công / Thất bại)</text>
+    <text x="25" y="92" font-family="'JetBrains Mono', monospace" font-size="11" fill="#cbd5e1">{</text>
+    <text x="45" y="112" font-family="'JetBrains Mono', monospace" font-size="11" fill="#38bdf8">"status": <tspan fill="#fbbf24">200</tspan>,</text>
+    <text x="45" y="132" font-family="'JetBrains Mono', monospace" font-size="11" fill="#38bdf8">"message": <tspan fill="#34d399">"Thao tác thành công"</tspan>,</text>
+    <text x="45" y="152" font-family="'JetBrains Mono', monospace" font-size="11" fill="#38bdf8">"data": <tspan fill="#cbd5e1">{ "id": 1, "name": "Laptop Dell", "price": 1200.0 }</tspan>,</text>
+    <text x="45" y="172" font-family="'JetBrains Mono', monospace" font-size="11" fill="#38bdf8">"timestamp": <tspan fill="#f472b6">"2026-11-09T10:30:00"</tspan></text>
+    <text x="25" y="192" font-family="'JetBrains Mono', monospace" font-size="11" fill="#cbd5e1">}</text>
+    <text x="25" y="218" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="#94a3b8">Frontend chỉ cần kiểm tra status hoặc bắt errors map trực tiếp lên UI.</text>
+
+    <!-- Differences table / key rules -->
+    <rect x="15" y="245" width="430" height="165" rx="8" fill="#1e1b4b" stroke="#6366f1" />
+    <text x="25" y="268" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="700" fill="#c084fc">⚠️ PHÂN BIỆT 3 ANNOTATION HAY GÂY NHẦM LẪN:</text>
+
+    <text x="25" y="293" font-family="'JetBrains Mono', monospace" font-size="11" fill="#38bdf8">• @NotNull:</text>
+    <text x="120" y="293" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="#cbd5e1">Không null, nhưng chuỗi rỗng "" hoặc khoảng trắng "   " vẫn hợp lệ.</text>
+
+    <text x="25" y="323" font-family="'JetBrains Mono', monospace" font-size="11" fill="#fbbf24">• @NotEmpty:</text>
+    <text x="120" y="323" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="#cbd5e1">Không null và độ dài &gt; 0 (chuỗi khoảng trắng "   " vẫn qua được!).</text>
+
+    <text x="25" y="353" font-family="'JetBrains Mono', monospace" font-size="11" fill="#34d399">• @NotBlank:</text>
+    <text x="120" y="353" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="#cbd5e1">Chặt nhất! Không null, không rỗng và <tspan font-weight="700" fill="#34d399">không chứa toàn khoảng trắng</tspan>.</text>
+
+    <text x="25" y="388" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="#fca5a5">👉 Dành cho String nhập liệu văn bản: LUÔN DÙNG @NotBlank!</text>
+  </g>
+</svg>

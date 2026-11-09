@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 540" width="100%" height="100%">
+  <defs>
+    <linearGradient id="exBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0e1322" />
+      <stop offset="100%" stop-color="#241228" />
+    </linearGradient>
+    <linearGradient id="exHeader" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#e11d48" />
+      <stop offset="100%" stop-color="#8b5cf6" />
+    </linearGradient>
+    <filter id="exShadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="6" stdDeviation="5" flood-color="#000" flood-opacity="0.4" />
+    </filter>
+    <marker id="exArrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#f43f5e" />
+    </marker>
+    <marker id="fileArrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8" />
+    </marker>
+  </defs>
+
+  <rect width="1080" height="540" rx="14" fill="url(#exBg)" stroke="#27273a" stroke-width="2" />
+
+  <!-- Header -->
+  <rect x="30" y="20" width="1020" height="42" rx="8" fill="url(#exHeader)" />
+  <text x="50" y="47" font-family="'Plus Jakarta Sans', sans-serif" font-size="16" font-weight="800" fill="#ffffff">🚨 GLOBAL EXCEPTION HANDLING (@RestControllerAdvice) &amp; MULTIPART FILE UPLOAD</text>
+  <text x="790" y="47" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="700" fill="#fdf2f8">Robust Error Handling &amp; Cloud Storage</text>
+
+  <!-- Left: Global Exception Handling Architecture -->
+  <g transform="translate(30, 80)" filter="url(#exShadow)">
+    <rect width="500" height="430" rx="10" fill="#151a2d" stroke="#2c3653" stroke-width="1.5" />
+    <rect width="500" height="34" rx="10" fill="#1e293b" />
+    <text x="20" y="23" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="700" fill="#fb7185">🛡️ Luồng Bắt Lỗi Tập Trung Toàn Ứng Dụng (@RestControllerAdvice)</text>
+
+    <!-- Source of exceptions -->
+    <rect x="20" y="55" width="460" height="90" rx="6" fill="#0f172a" stroke="#334155" />
+    <text x="30" y="78" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="700" fill="#e2e8f0">Nơi Phát Sinh Exception Trong Hệ Thống:</text>
+    <text x="30" y="98" font-family="'JetBrains Mono', monospace" font-size="10.5" fill="#f87171">• CustomException / ResourceNotFoundException ("Không tìm thấy SP")</text>
+    <text x="30" y="116" font-family="'JetBrains Mono', monospace" font-size="10.5" fill="#fbbf24">• MethodArgumentNotValidException (Validation @NotBlank, @Min fail)</text>
+    <text x="30" y="134" font-family="'JetBrains Mono', monospace" font-size="10.5" fill="#38bdf8">• MaxUploadSizeExceededException / AccessDeniedException</text>
+
+    <!-- Arrow down -->
+    <path d="M 250 145 L 250 175" fill="none" stroke="#f43f5e" stroke-width="2.5" marker-end="url(#exArrow)" />
+    <text x="260" y="165" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" fill="#f43f5e">throw ex</text>
+
+    <!-- Global Advice Box -->
+    <rect x="20" y="180" width="460" height="120" rx="8" fill="#3b0716" stroke="#f43f5e" stroke-width="2" />
+    <text x="30" y="205" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="800" fill="#fda4af">@RestControllerAdvice</text>
+    <text x="30" y="228" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="#fecdd3">Đóng vai trò Interceptor đánh chặn mọi Exception bung ra từ các Controller:</text>
+
+    <text x="40" y="253" font-family="'JetBrains Mono', monospace" font-size="10.5" fill="#ffffff">@ExceptionHandler(CustomException.class) -&gt; 404 NOT_FOUND</text>
+    <text x="40" y="273" font-family="'JetBrains Mono', monospace" font-size="10.5" fill="#ffffff">@ExceptionHandler(MethodArgumentNotValidException.class) -&gt; 400 BAD_REQUEST</text>
+    <text x="40" y="291" font-family="'JetBrains Mono', monospace" font-size="10.5" fill="#ffffff">@ExceptionHandler(Exception.class) -&gt; 500 INTERNAL_SERVER_ERROR</text>
+
+    <!-- Arrow down -->
+    <path d="M 250 300 L 250 330" fill="none" stroke="#f43f5e" stroke-width="2.5" marker-end="url(#exArrow)" />
+
+    <!-- Standardized Error Response -->
+    <rect x="20" y="335" width="460" height="85" rx="6" fill="#0f172a" stroke="#f43f5e" />
+    <text x="30" y="358" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="#34d399">Trả về JSON Chuẩn Cho Frontend (Không làm lộ StackTrace nguy hiểm):</text>
+    <text x="30" y="380" font-family="'JetBrains Mono', monospace" font-size="10" fill="#cbd5e1">{ "status": 404, "message": "Product with id 99 not found", "data": null }</text>
+    <text x="30" y="402" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="#94a3b8">Bảo mật tuyệt đối, che giấu cấu trúc database và framework nội bộ.</text>
+  </g>
+
+  <!-- Right: Multipart File Upload Pipeline -->
+  <g transform="translate(560, 80)" filter="url(#exShadow)">
+    <rect width="490" height="430" rx="10" fill="#151a2d" stroke="#2c3653" stroke-width="1.5" />
+    <rect width="490" height="34" rx="10" fill="#1e293b" />
+    <text x="20" y="23" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="700" fill="#38bdf8">📁 Quy Trình Tiếp Nhận &amp; Upload File (MultipartFile)</text>
+
+    <!-- Step 1: Form Data Request -->
+    <rect x="20" y="55" width="450" height="75" rx="6" fill="#0f172a" stroke="#334155" />
+    <text x="30" y="78" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="700" fill="#38bdf8">1. HTTP Multipart Request:</text>
+    <text x="30" y="98" font-family="'JetBrains Mono', monospace" font-size="10.5" fill="#cbd5e1">Content-Type: <tspan fill="#34d399">multipart/form-data</tspan></text>
+    <text x="30" y="116" font-family="'JetBrains Mono', monospace" font-size="10.5" fill="#fbbf24">@RequestParam("file") MultipartFile file, @ModelAttribute ProductDTO dto</text>
+
+    <path d="M 245 130 L 245 150" fill="none" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#fileArrow)" />
+
+    <!-- Step 2: Validation check -->
+    <rect x="20" y="155" width="450" height="110" rx="6" fill="#0f172a" stroke="#334155" />
+    <text x="30" y="178" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="700" fill="#fbbf24">2. Kiểm Tra Định Dạng &amp; Kích Thước File:</text>
+    <text x="30" y="200" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="#cbd5e1">• Kiểm tra dung lượng: <tspan font-family="'JetBrains Mono', monospace" fill="#38bdf8">file.getSize() &lt;= 5 * 1024 * 1024</tspan> (5MB)</text>
+    <text x="30" y="222" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="#cbd5e1">• Kiểm tra MIME: <tspan font-family="'JetBrains Mono', monospace" fill="#38bdf8">file.getContentType()</tspan> (image/jpeg, image/png)</text>
+    <text x="30" y="244" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="#f87171">• Chặn file thực thi độc hại: .exe, .sh, .bat, .php, .jsp...</text>
+
+    <path d="M 245 265 L 245 285" fill="none" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#fileArrow)" />
+
+    <!-- Step 3: Cloudinary / Disk Storage -->
+    <rect x="20" y="290" width="450" height="130" rx="8" fill="#132338" stroke="#0284c7" stroke-width="1.8" />
+    <text x="30" y="315" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="700" fill="#38bdf8">3. Lưu Trữ File Lên Cloudinary CDN / Máy Chủ:</text>
+    <text x="30" y="338" font-family="'JetBrains Mono', monospace" font-size="10.5" fill="#93c5fd">Map uploadResult = cloudinary.uploader().upload(file.getBytes(), ...);</text>
+    <text x="30" y="358" font-family="'JetBrains Mono', monospace" font-size="10.5" fill="#34d399">String imageUrl = uploadResult.get("url").toString();</text>
+    <text x="30" y="380" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="#cbd5e1">Lưu URL vào thuộc tính <tspan font-family="'JetBrains Mono', monospace" fill="#fbbf24">product.setImage(imageUrl)</tspan> và lưu DB.</text>
+    <text x="30" y="404" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="#94a3b8">Ưu điểm: Không tốn dung lượng máy chủ backend, tối ưu CDN toàn cầu.</text>
+  </g>
+</svg>

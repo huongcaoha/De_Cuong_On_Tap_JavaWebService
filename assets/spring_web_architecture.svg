@@ -1,0 +1,261 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 560" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e1b4b" />
+    </linearGradient>
+    <linearGradient id="clientGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284c7" />
+      <stop offset="100%" stop-color="#0369a1" />
+    </linearGradient>
+    <linearGradient id="tomcatGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d97706" />
+      <stop offset="100%" stop-color="#b45309" />
+    </linearGradient>
+    <linearGradient id="springGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#16a34a" />
+      <stop offset="100%" stop-color="#15803d" />
+    </linearGradient>
+    <linearGradient id="controllerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0d9488" />
+      <stop offset="100%" stop-color="#0f766e" />
+    </linearGradient>
+    <linearGradient id="serviceGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366f1" />
+      <stop offset="100%" stop-color="#4f46e5" />
+    </linearGradient>
+    <linearGradient id="repoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8b5cf6" />
+      <stop offset="100%" stop-color="#7c3aed" />
+    </linearGradient>
+    <linearGradient id="dbGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ec4899" />
+      <stop offset="100%" stop-color="#be185d" />
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="8" stdDeviation="6" flood-color="#000" flood-opacity="0.45" />
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8" />
+    </marker>
+    <marker id="arrowGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#34d399" />
+    </marker>
+  </defs>
+
+  <rect width="1100" height="560" rx="16" fill="url(#bgGrad)" />
+
+  <!-- Title Badge -->
+  <rect x="40" y="25" width="460" height="38" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+  <text x="55" y="50" font-family="'Plus Jakarta Sans', sans-serif" font-size="16" font-weight="800" fill="#38bdf8">🌐 KIẾN TRÚC TỔNG QUAN HỆ THỐNG SPRING WEB SERVICES</text>
+
+  <!-- Subtitle -->
+  <text x="530" y="50" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="600" fill="#94a3b8">Luồng dữ liệu: Client (Request) ➔ DispatcherServlet ➔ 3-Tier Layered Architecture ➔ Database</text>
+
+  <!-- 1. CLIENT CONTAINER -->
+  <g transform="translate(40, 95)" filter="url(#shadow)">
+    <rect width="180" height="420" rx="12" fill="#1e293b" stroke="#38bdf8" stroke-width="2" />
+    <rect x="0" y="0" width="180" height="42" rx="12" fill="url(#clientGrad)" />
+    <text x="90" y="27" font-family="'Plus Jakarta Sans', sans-serif" font-size="15" font-weight="700" fill="#ffffff" text-anchor="middle">CLIENT APPS</text>
+
+    <!-- Client items -->
+    <rect x="15" y="60" width="150" height="70" rx="8" fill="#0f172a" stroke="#334155" />
+    <text x="90" y="90" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="700" fill="#38bdf8" text-anchor="middle">🖥️ Web Browser</text>
+    <text x="90" y="112" font-family="'JetBrains Mono', monospace" font-size="11" fill="#94a3b8" text-anchor="middle">React / Angular / Vue</text>
+
+    <rect x="15" y="145" width="150" height="70" rx="8" fill="#0f172a" stroke="#334155" />
+    <text x="90" y="175" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="700" fill="#38bdf8" text-anchor="middle">📱 Mobile Client</text>
+    <text x="90" y="197" font-family="'JetBrains Mono', monospace" font-size="11" fill="#94a3b8" text-anchor="middle">Flutter / iOS / Android</text>
+
+    <rect x="15" y="230" width="150" height="70" rx="8" fill="#0f172a" stroke="#334155" />
+    <text x="90" y="260" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="700" fill="#38bdf8" text-anchor="middle">🧪 API Test Tool</text>
+    <text x="90" y="282" font-family="'JetBrains Mono', monospace" font-size="11" fill="#fb923c" text-anchor="middle">Postman / cURL</text>
+
+    <rect x="15" y="315" width="150" height="85" rx="8" fill="#132338" stroke="#0284c7" />
+    <text x="90" y="340" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="700" fill="#38bdf8" text-anchor="middle">HTTP Protocol</text>
+    <text x="90" y="362" font-family="'JetBrains Mono', monospace" font-size="11" fill="#cbd5e1" text-anchor="middle">GET • POST • PUT</text>
+    <text x="90" y="382" font-family="'JetBrains Mono', monospace" font-size="11" fill="#cbd5e1" text-anchor="middle">DELETE • JSON Body</text>
+  </g>
+
+  <!-- Flow 1: Client -> Server -->
+  <path d="M 225 240 L 285 240" fill="none" stroke="#38bdf8" stroke-width="3" marker-end="url(#arrow)" />
+  <text x="255" y="230" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" fill="#38bdf8" text-anchor="middle">HTTP Req</text>
+
+  <!-- Flow 1 Back: Server -> Client -->
+  <path d="M 285 280 L 225 280" fill="none" stroke="#34d399" stroke-width="3" stroke-dasharray="5,4" marker-end="url(#arrowGreen)" />
+  <text x="255" y="302" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" fill="#34d399" text-anchor="middle">JSON Res</text>
+
+  <!-- 2. SPRING BOOT APPLICATION WRAPPER -->
+  <g transform="translate(290, 95)" filter="url(#shadow)">
+    <!-- Main container -->
+    <rect width="550" height="420" rx="14" fill="#0b1329" stroke="#16a34a" stroke-width="2.5" />
+    
+    <!-- Header banner -->
+    <rect x="0" y="0" width="550" height="42" rx="14" fill="url(#springGrad)" />
+    <text x="275" y="27" font-family="'Plus Jakarta Sans', sans-serif" font-size="16" font-weight="800" fill="#ffffff" text-anchor="middle">🍃 SPRING BOOT BACKEND CONTAINER (PORT 8080)</text>
+
+    <!-- Embedded Server & Security Filter -->
+    <rect x="20" y="58" width="130" height="340" rx="10" fill="#131b2e" stroke="#d97706" stroke-width="1.8" />
+    <rect x="20" y="58" width="130" height="32" rx="10" fill="url(#tomcatGrad)" />
+    <text x="85" y="80" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">Core Gateway</text>
+
+    <text x="85" y="112" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="#fbbf24" text-anchor="middle">Embedded Tomcat</text>
+    <text x="85" y="130" font-family="'JetBrains Mono', monospace" font-size="10" fill="#94a3b8" text-anchor="middle">Port 8080</text>
+
+    <rect x="30" y="148" width="110" height="70" rx="6" fill="#1e293b" stroke="#334155" />
+    <text x="85" y="172" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="#f87171" text-anchor="middle">Security Chain</text>
+    <text x="85" y="192" font-family="'JetBrains Mono', monospace" font-size="10" fill="#cbd5e1" text-anchor="middle">JWT Filter</text>
+    <text x="85" y="208" font-family="'JetBrains Mono', monospace" font-size="9" fill="#94a3b8" text-anchor="middle">Auth &amp; Roles</text>
+
+    <rect x="30" y="230" width="110" height="95" rx="6" fill="#1e293b" stroke="#38bdf8" />
+    <text x="85" y="254" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="#38bdf8" text-anchor="middle">DispatcherServlet</text>
+    <text x="85" y="274" font-family="'JetBrains Mono', monospace" font-size="10" fill="#cbd5e1" text-anchor="middle">Front Controller</text>
+    <text x="85" y="294" font-family="'JetBrains Mono', monospace" font-size="9" fill="#94a3b8" text-anchor="middle">HandlerMapping</text>
+    <text x="85" y="312" font-family="'JetBrains Mono', monospace" font-size="9" fill="#94a3b8" text-anchor="middle">DataBinder</text>
+
+    <rect x="30" y="335" width="110" height="50" rx="6" fill="#1e293b" stroke="#34d399" />
+    <text x="85" y="357" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="#34d399" text-anchor="middle">IoC &amp; DI Container</text>
+    <text x="85" y="375" font-family="'JetBrains Mono', monospace" font-size="9" fill="#94a3b8" text-anchor="middle">Bean Lifecycle (@Bean)</text>
+
+    <!-- Arrow from Dispatcher to Controller -->
+    <path d="M 155 270 L 190 270" fill="none" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#arrow)" />
+
+    <!-- 3-TIER ARCHITECTURE BOX -->
+    <g transform="translate(195, 58)">
+      <!-- CONTROLLER LAYER -->
+      <rect width="105" height="340" rx="8" fill="#10232d" stroke="#0d9488" stroke-width="1.8" />
+      <rect width="105" height="32" rx="8" fill="url(#controllerGrad)" />
+      <text x="52" y="21" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">CONTROLLER</text>
+      
+      <text x="52" y="55" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" fill="#2dd4bf" text-anchor="middle">@RestController</text>
+      <text x="52" y="75" font-family="'JetBrains Mono', monospace" font-size="9" fill="#94a3b8" text-anchor="middle">@RequestMapping</text>
+      <text x="52" y="93" font-family="'JetBrains Mono', monospace" font-size="9" fill="#94a3b8" text-anchor="middle">@GetMapping</text>
+      <text x="52" y="110" font-family="'JetBrains Mono', monospace" font-size="9" fill="#94a3b8" text-anchor="middle">@PostMapping</text>
+      <text x="52" y="128" font-family="'JetBrains Mono', monospace" font-size="9" fill="#94a3b8" text-anchor="middle">@PutMapping</text>
+      <text x="52" y="146" font-family="'JetBrains Mono', monospace" font-size="9" fill="#94a3b8" text-anchor="middle">@DeleteMapping</text>
+
+      <rect x="8" y="160" width="89" height="85" rx="5" fill="#0f172a" stroke="#334155" />
+      <text x="52" y="180" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" fill="#38bdf8" text-anchor="middle">Data Binding</text>
+      <text x="52" y="200" font-family="'JetBrains Mono', monospace" font-size="9" fill="#cbd5e1" text-anchor="middle">@RequestBody</text>
+      <text x="52" y="218" font-family="'JetBrains Mono', monospace" font-size="9" fill="#cbd5e1" text-anchor="middle">@PathVariable</text>
+      <text x="52" y="235" font-family="'JetBrains Mono', monospace" font-size="9" fill="#cbd5e1" text-anchor="middle">@Valid DTO</text>
+
+      <rect x="8" y="255" width="89" height="75" rx="5" fill="#1e1b4b" stroke="#f43f5e" />
+      <text x="52" y="275" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" fill="#fb7185" text-anchor="middle">Advice &amp; Error</text>
+      <text x="52" y="295" font-family="'JetBrains Mono', monospace" font-size="9" fill="#fda4af" text-anchor="middle">@RestAdvice</text>
+      <text x="52" y="315" font-family="'JetBrains Mono', monospace" font-size="9" fill="#fda4af" text-anchor="middle">@Exception</text>
+    </g>
+
+    <!-- Arrow Controller -> Service -->
+    <path d="M 305 230 L 330 230" fill="none" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#arrow)" />
+    <path d="M 330 250 L 305 250" fill="none" stroke="#34d399" stroke-width="2.5" stroke-dasharray="4,3" marker-end="url(#arrowGreen)" />
+
+    <g transform="translate(335, 58)">
+      <!-- SERVICE LAYER -->
+      <rect width="95" height="340" rx="8" fill="#18153b" stroke="#6366f1" stroke-width="1.8" />
+      <rect width="95" height="32" rx="8" fill="url(#serviceGrad)" />
+      <text x="47" y="21" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">SERVICE</text>
+
+      <text x="47" y="55" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" fill="#a5b4fc" text-anchor="middle">@Service</text>
+      <text x="47" y="75" font-family="'JetBrains Mono', monospace" font-size="9" fill="#c7d2fe" text-anchor="middle">Business Logic</text>
+
+      <rect x="6" y="90" width="83" height="70" rx="5" fill="#0f172a" stroke="#334155" />
+      <text x="47" y="112" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" fill="#818cf8" text-anchor="middle">DI Injection</text>
+      <text x="47" y="132" font-family="'JetBrains Mono', monospace" font-size="9" fill="#cbd5e1" text-anchor="middle">@Autowired</text>
+      <text x="47" y="148" font-family="'JetBrains Mono', monospace" font-size="9" fill="#94a3b8" text-anchor="middle">Constructor DI</text>
+
+      <rect x="6" y="170" width="83" height="75" rx="5" fill="#0f172a" stroke="#334155" />
+      <text x="47" y="192" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" fill="#38bdf8" text-anchor="middle">Validation &amp;</text>
+      <text x="47" y="210" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" fill="#38bdf8" text-anchor="middle">Security</text>
+      <text x="47" y="232" font-family="'JetBrains Mono', monospace" font-size="9" fill="#94a3b8" text-anchor="middle">Throw Excep</text>
+
+      <rect x="6" y="255" width="83" height="75" rx="5" fill="#0f172a" stroke="#334155" />
+      <text x="47" y="278" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" fill="#34d399" text-anchor="middle">DTO Mapper</text>
+      <text x="47" y="300" font-family="'JetBrains Mono', monospace" font-size="9" fill="#cbd5e1" text-anchor="middle">Entity &lt;-&gt; DTO</text>
+      <text x="47" y="318" font-family="'JetBrains Mono', monospace" font-size="9" fill="#94a3b8" text-anchor="middle">File Upload</text>
+    </g>
+
+    <!-- Arrow Service -> Repository -->
+    <path d="M 435 230 L 450 230" fill="none" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#arrow)" />
+    <path d="M 450 250 L 435 250" fill="none" stroke="#34d399" stroke-width="2.5" stroke-dasharray="4,3" marker-end="url(#arrowGreen)" />
+
+    <g transform="translate(455, 58)">
+      <!-- REPOSITORY LAYER -->
+      <rect width="85" height="340" rx="8" fill="#1f143d" stroke="#8b5cf6" stroke-width="1.8" />
+      <rect width="85" height="32" rx="8" fill="url(#repoGrad)" />
+      <text x="42" y="21" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">REPOSITORY</text>
+
+      <text x="42" y="55" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" fill="#c084fc" text-anchor="middle">@Repository</text>
+      <text x="42" y="75" font-family="'JetBrains Mono', monospace" font-size="9" fill="#ddd6fe" text-anchor="middle">JpaRepository</text>
+
+      <rect x="5" y="90" width="75" height="70" rx="5" fill="#0f172a" stroke="#334155" />
+      <text x="42" y="112" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" fill="#c084fc" text-anchor="middle">CRUD Builtin</text>
+      <text x="42" y="132" font-family="'JetBrains Mono', monospace" font-size="9" fill="#cbd5e1" text-anchor="middle">save()</text>
+      <text x="42" y="148" font-family="'JetBrains Mono', monospace" font-size="9" fill="#cbd5e1" text-anchor="middle">findAll()</text>
+
+      <rect x="5" y="170" width="75" height="75" rx="5" fill="#0f172a" stroke="#334155" />
+      <text x="42" y="192" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" fill="#38bdf8" text-anchor="middle">Queries</text>
+      <text x="42" y="212" font-family="'JetBrains Mono', monospace" font-size="9" fill="#93c5fd" text-anchor="middle">@Query JPQL</text>
+      <text x="42" y="232" font-family="'JetBrains Mono', monospace" font-size="9" fill="#93c5fd" text-anchor="middle">MethodName</text>
+
+      <rect x="5" y="255" width="75" height="75" rx="5" fill="#0f172a" stroke="#334155" />
+      <text x="42" y="278" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" fill="#fbbf24" text-anchor="middle">Page &amp; Sort</text>
+      <text x="42" y="300" font-family="'JetBrains Mono', monospace" font-size="9" fill="#fde68a" text-anchor="middle">PageRequest</text>
+      <text x="42" y="318" font-family="'JetBrains Mono', monospace" font-size="9" fill="#fde68a" text-anchor="middle">Sort.by()</text>
+    </g>
+  </g>
+
+  <!-- Flow 2: Repository -> Database -->
+  <path d="M 845 240 L 890 240" fill="none" stroke="#ec4899" stroke-width="3" marker-end="url(#arrow)" />
+  <text x="867" y="230" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" fill="#f472b6" text-anchor="middle">Hibernate</text>
+  <text x="867" y="270" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" fill="#f472b6" text-anchor="middle">SQL Query</text>
+
+  <!-- 3. DATABASE CONTAINER -->
+  <g transform="translate(895, 95)" filter="url(#shadow)">
+    <rect width="165" height="420" rx="12" fill="#1e293b" stroke="#ec4899" stroke-width="2" />
+    <rect x="0" y="0" width="165" height="42" rx="12" fill="url(#dbGrad)" />
+    <text x="82" y="27" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="700" fill="#ffffff" text-anchor="middle">DATABASE ENGINE</text>
+
+    <g transform="translate(15, 60)">
+      <rect width="135" height="100" rx="8" fill="#0f172a" stroke="#334155" />
+      <text x="67" y="30" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="700" fill="#f472b6" text-anchor="middle">🐬 MySQL 8.0</text>
+      <text x="67" y="52" font-family="'JetBrains Mono', monospace" font-size="11" fill="#cbd5e1" text-anchor="middle">Port 3306</text>
+      <text x="67" y="74" font-family="'JetBrains Mono', monospace" font-size="10" fill="#94a3b8" text-anchor="middle">InnoDB / ACID</text>
+      <text x="67" y="90" font-family="'JetBrains Mono', monospace" font-size="9" fill="#34d399" text-anchor="middle">HikariCP Pool</text>
+    </g>
+
+    <g transform="translate(15, 175)">
+      <rect width="135" height="130" rx="8" fill="#0f172a" stroke="#334155" />
+      <text x="67" y="25" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="700" fill="#38bdf8" text-anchor="middle">ORM Entities</text>
+      <text x="67" y="48" font-family="'JetBrains Mono', monospace" font-size="10" fill="#cbd5e1" text-anchor="middle">@Entity</text>
+      <text x="67" y="68" font-family="'JetBrains Mono', monospace" font-size="10" fill="#cbd5e1" text-anchor="middle">@Table, @Column</text>
+      <text x="67" y="88" font-family="'JetBrains Mono', monospace" font-size="10" fill="#cbd5e1" text-anchor="middle">@OneToMany</text>
+      <text x="67" y="108" font-family="'JetBrains Mono', monospace" font-size="10" fill="#cbd5e1" text-anchor="middle">@ManyToOne</text>
+    </g>
+
+    <g transform="translate(15, 320)">
+      <rect width="135" height="85" rx="8" fill="#132338" stroke="#0284c7" />
+      <text x="67" y="25" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="#38bdf8" text-anchor="middle">Cloud / Storage</text>
+      <text x="67" y="47" font-family="'JetBrains Mono', monospace" font-size="10" fill="#cbd5e1" text-anchor="middle">☁️ Cloudinary CDN</text>
+      <text x="67" y="67" font-family="'JetBrains Mono', monospace" font-size="9" fill="#94a3b8" text-anchor="middle">Multipart Files / Images</text>
+    </g>
+  </g>
+
+  <!-- Legend / Highlights at bottom -->
+  <g transform="translate(40, 525)">
+    <circle cx="10" cy="10" r="6" fill="#38bdf8" />
+    <text x="25" y="14" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="600" fill="#cbd5e1">Luồng Request (Vào)</text>
+
+    <circle cx="170" cy="10" r="6" fill="#34d399" />
+    <text x="185" y="14" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="600" fill="#cbd5e1">Luồng Response (JSON Ra)</text>
+
+    <circle cx="370" cy="10" r="6" fill="#f87171" />
+    <text x="385" y="14" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="600" fill="#cbd5e1">Bảo Mật Security &amp; JWT Filter</text>
+
+    <circle cx="610" cy="10" r="6" fill="#a855f7" />
+    <text x="625" y="14" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="600" fill="#cbd5e1">Spring Data JPA &amp; Hibernate ORM</text>
+
+    <circle cx="880" cy="10" r="6" fill="#fbbf24" />
+    <text x="895" y="14" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="600" fill="#cbd5e1">IoC Container &amp; Bean Scope</text>
+  </g>
+</svg>

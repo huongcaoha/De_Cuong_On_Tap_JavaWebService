@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 540" width="100%" height="100%">
+  <defs>
+    <linearGradient id="secBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090d18" />
+      <stop offset="100%" stop-color="#14192d" />
+    </linearGradient>
+    <linearGradient id="secHeader" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2563eb" />
+      <stop offset="100%" stop-color="#7c3aed" />
+    </linearGradient>
+    <filter id="secShadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="6" stdDeviation="5" flood-color="#000" flood-opacity="0.4" />
+    </filter>
+    <marker id="sArrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8" />
+    </marker>
+    <marker id="sArrowGrn" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#34d399" />
+    </marker>
+  </defs>
+
+  <rect width="1080" height="540" rx="14" fill="url(#secBg)" stroke="#1e293b" stroke-width="2" />
+
+  <!-- Header -->
+  <rect x="30" y="20" width="1020" height="42" rx="8" fill="url(#secHeader)" />
+  <text x="50" y="47" font-family="'Plus Jakarta Sans', sans-serif" font-size="16" font-weight="800" fill="#ffffff">🔒 KIẾN TRÚC SPRING SECURITY 6 &amp; BỘ LỌC BẢO MẬT (SECURITY FILTER CHAIN)</text>
+  <text x="770" y="47" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="700" fill="#ede9fe">DelegatingFilterProxy &amp; FilterChainProxy</text>
+
+  <!-- Left: Filter Chain Flow -->
+  <g transform="translate(30, 80)" filter="url(#secShadow)">
+    <rect width="530" height="430" rx="10" fill="#131b2e" stroke="#253556" stroke-width="1.5" />
+    <rect width="530" height="34" rx="10" fill="#1e293b" />
+    <text x="20" y="23" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="700" fill="#38bdf8">🛡️ Trình Tự Đánh Chặn Của Chuỗi Filter (SecurityFilterChain)</text>
+
+    <!-- Servlet Container Level -->
+    <rect x="20" y="50" width="490" height="65" rx="6" fill="#0f172a" stroke="#334155" />
+    <text x="35" y="72" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="700" fill="#fbbf24">Servlet Container (Tomcat Level)</text>
+    <text x="35" y="94" font-family="'JetBrains Mono', monospace" font-size="11" fill="#cbd5e1">DelegatingFilterProxy: <tspan font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="#94a3b8">Cầu nối chuyển tiếp request sang Spring Application Context</tspan></text>
+
+    <!-- Arrow down -->
+    <path d="M 265 115 L 265 135" fill="none" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#sArrow)" />
+
+    <!-- FilterChainProxy -->
+    <rect x="20" y="140" width="490" height="60" rx="6" fill="#1e1b4b" stroke="#6366f1" />
+    <text x="35" y="162" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="700" fill="#c084fc">FilterChainProxy (Spring Security Core)</text>
+    <text x="35" y="184" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="#cbd5e1">Quản lý các chuỗi SecurityFilterChain được định nghĩa trong SecurityConfig.</text>
+
+    <!-- Arrow down -->
+    <path d="M 265 200 L 265 220" fill="none" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#sArrow)" />
+
+    <!-- Security Filters Chain List -->
+    <rect x="20" y="225" width="490" height="185" rx="8" fill="#0b1329" stroke="#38bdf8" stroke-width="1.8" />
+    <text x="35" y="248" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="700" fill="#38bdf8">Danh Sách Các Filter Then Chốt:</text>
+
+    <text x="35" y="273" font-family="'JetBrains Mono', monospace" font-size="11" fill="#cbd5e1">1. CorsFilter: <tspan fill="#94a3b8">Kiểm tra nguồn gốc gọi API từ trình duyệt khác domain</tspan></text>
+    <text x="35" y="295" font-family="'JetBrains Mono', monospace" font-size="11" fill="#cbd5e1">2. CsrfFilter: <tspan fill="#94a3b8">Bảo vệ chống tấn công CSRF (Thường disable với REST API)</tspan></text>
+    <text x="35" y="318" font-family="'JetBrains Mono', monospace" font-size="11" fill="#34d399">3. JWTFilterChain: <tspan fill="#a7f3d0">Đọc token Bearer, giải mã và nạp SecurityContext</tspan></text>
+    <text x="35" y="340" font-family="'JetBrains Mono', monospace" font-size="11" fill="#cbd5e1">4. ExceptionTranslationFilter: <tspan fill="#fca5a5">Bắt lỗi AuthException -&gt; AuthenticationEntryPoint</tspan></text>
+    <text x="35" y="362" font-family="'JetBrains Mono', monospace" font-size="11" fill="#fb923c">5. AuthorizationFilter: <tspan fill="#fed7aa">Kiểm tra quyền hạn hasRole("ADMIN"), hasAuthority()</tspan></text>
+    <text x="35" y="390" font-family="'JetBrains Mono', monospace" font-size="10.5" fill="#38bdf8">==&gt; Vượt qua tất cả -&gt; Chuyển tiếp tới Controller thực thi API!</text>
+  </g>
+
+  <!-- Right: Core Concepts & Auth vs Auth -->
+  <g transform="translate(590, 80)" filter="url(#secShadow)">
+    <rect width="460" height="430" rx="10" fill="#131b2e" stroke="#253556" stroke-width="1.5" />
+    <rect width="460" height="34" rx="10" fill="#1e293b" />
+    <text x="20" y="23" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="700" fill="#c084fc">👥 Đối Tượng Cốt Lõi &amp; Phân Biệt AuthN vs AuthZ</text>
+
+    <!-- AuthN vs AuthZ Box -->
+    <rect x="15" y="48" width="430" height="155" rx="8" fill="#0f172a" stroke="#334155" />
+    <text x="25" y="70" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="700" fill="#fb7185">PHÂN BIỆT RÕ RÀNG (BẪY THI CỬ ĐIỂN HÌNH):</text>
+
+    <text x="25" y="95" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="#38bdf8">1. Authentication (Xác thực - Bạn là ai?):</text>
+    <text x="35" y="115" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="#cbd5e1">• Kiểm tra Username/Password hoặc Token xem có đúng không.</text>
+    <text x="35" y="133" font-family="'JetBrains Mono', monospace" font-size="10" fill="#f87171">• Thất bại trả về HTTP 401 Unauthorized.</text>
+
+    <text x="25" y="158" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="#fbbf24">2. Authorization (Phân quyền - Bạn được phép làm gì?):</text>
+    <text x="35" y="178" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="#cbd5e1">• Kiểm tra Role (USER, ADMIN) xem có quyền xóa sản phẩm không.</text>
+    <text x="35" y="196" font-family="'JetBrains Mono', monospace" font-size="10" fill="#f87171">• Thất bại trả về HTTP 403 Forbidden.</text>
+
+    <!-- 3 Core Classes -->
+    <rect x="15" y="215" width="430" height="195" rx="8" fill="#1e1b4b" stroke="#6366f1" />
+    <text x="25" y="238" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="700" fill="#a5b4fc">3 Thành Phần Bắt Buộc Khi Triển Khai:</text>
+
+    <text x="25" y="262" font-family="'JetBrains Mono', monospace" font-size="11" fill="#34d399">• UserDetails / UserPrincipal:</text>
+    <text x="35" y="280" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="#cbd5e1">Bọc đối tượng User của hệ thống, cung cấp getAuthorities(), isEnabled().</text>
+
+    <text x="25" y="306" font-family="'JetBrains Mono', monospace" font-size="11" fill="#38bdf8">• UserDetailsService:</text>
+    <text x="35" y="324" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="#cbd5e1">Interface có phương thức duy nhất: <tspan font-family="'JetBrains Mono', monospace" fill="#38bdf8">loadUserByUsername(String)</tspan>.</text>
+
+    <text x="25" y="350" font-family="'JetBrains Mono', monospace" font-size="11" fill="#fbbf24">• SecurityContextHolder:</text>
+    <text x="35" y="368" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" fill="#cbd5e1">Nơi lưu trữ phiên xác thực hiện tại trên từng Thread (ThreadLocal):</text>
+    <text x="35" y="390" font-family="'JetBrains Mono', monospace" font-size="9.5" fill="#cbd5e1">SecurityContextHolder.getContext().setAuthentication(auth);</text>
+  </g>
+</svg>

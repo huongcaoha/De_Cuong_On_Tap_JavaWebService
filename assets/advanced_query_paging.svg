@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 540" width="100%" height="100%">
+  <defs>
+    <linearGradient id="queryBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b1120" />
+      <stop offset="100%" stop-color="#1e1838" />
+    </linearGradient>
+    <linearGradient id="queryHeader" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284c7" />
+      <stop offset="100%" stop-color="#10b981" />
+    </linearGradient>
+    <filter id="qShadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="6" stdDeviation="5" flood-color="#000" flood-opacity="0.4" />
+    </filter>
+  </defs>
+
+  <rect width="1080" height="540" rx="14" fill="url(#queryBg)" stroke="#1e293b" stroke-width="2" />
+
+  <!-- Header -->
+  <rect x="30" y="20" width="1020" height="42" rx="8" fill="url(#queryHeader)" />
+  <text x="50" y="47" font-family="'Plus Jakarta Sans', sans-serif" font-size="16" font-weight="800" fill="#ffffff">📊 ADVANCED DATA QUERYING: DERIVED METHODS • JPQL • PAGING &amp; DTO PROJECTION</text>
+  <text x="820" y="47" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="700" fill="#f0fdf4">Zero-SQL &amp; High Performance</text>
+
+  <!-- Box 1: Derived Query Methods & JPQL -->
+  <g transform="translate(30, 80)" filter="url(#qShadow)">
+    <rect width="490" height="430" rx="10" fill="#131c31" stroke="#253556" stroke-width="1.5" />
+    <rect width="490" height="34" rx="10" fill="#1e293b" />
+    <text x="20" y="23" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="700" fill="#38bdf8">🔍 Phương Thức Đặt Tên Tuỳ Chỉnh &amp; JPQL</text>
+
+    <!-- Method naming rules -->
+    <rect x="15" y="48" width="460" height="155" rx="8" fill="#0f172a" stroke="#334155" />
+    <text x="25" y="70" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="700" fill="#34d399">1. Derived Query Method (Spring tự phân tích cú pháp):</text>
+    <text x="25" y="93" font-family="'JetBrains Mono', monospace" font-size="11" fill="#38bdf8">• findByNameContainingIgnoreCase(String name)</text>
+    <text x="25" y="113" font-family="'JetBrains Mono', monospace" font-size="11" fill="#cbd5e1">  -&gt; WHERE LOWER(name) LIKE LOWER('%...%')</text>
+    <text x="25" y="135" font-family="'JetBrains Mono', monospace" font-size="11" fill="#fbbf24">• findByPriceBetween(Double min, Double max)</text>
+    <text x="25" y="155" font-family="'JetBrains Mono', monospace" font-size="11" fill="#f472b6">• findByCategoryIdAndStatusTrue(Long cid)</text>
+    <text x="25" y="175" font-family="'JetBrains Mono', monospace" font-size="11" fill="#a78bfa">• countByStatus(Boolean status) / existsByEmail(String email)</text>
+    <text x="25" y="195" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="#94a3b8">Keyword: And, Or, Between, LessThan, GreaterThan, Like, OrderBy, In, True, False.</text>
+
+    <!-- JPQL vs Native Query -->
+    <rect x="15" y="215" width="460" height="195" rx="8" fill="#0f172a" stroke="#334155" />
+    <text x="25" y="238" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="700" fill="#a855f7">2. Truy Vấn Với @Query (JPQL vs Native SQL):</text>
+    <text x="25" y="260" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="#cbd5e1">• <tspan font-weight="700" fill="#a855f7">JPQL (Mặc định):</tspan> Viết theo tên <tspan font-weight="700" fill="#38bdf8">Java Entity &amp; Thuộc tính</tspan> (không phải tên bảng/cột SQL).</text>
+    <text x="35" y="282" font-family="'JetBrains Mono', monospace" font-size="10" fill="#c084fc">@Query("SELECT p FROM Product p WHERE p.category.id = :cid")</text>
+    <text x="35" y="300" font-family="'JetBrains Mono', monospace" font-size="10" fill="#cbd5e1">List&lt;Product&gt; findByCat(@Param("cid") Long cid);</text>
+
+    <text x="25" y="325" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="#cbd5e1">• <tspan font-weight="700" fill="#f59e0b">Native SQL Query:</tspan> Dùng khi cần cú pháp riêng của MySQL/Oracle.</text>
+    <text x="35" y="347" font-family="'JetBrains Mono', monospace" font-size="10" fill="#f59e0b">@Query(value = "SELECT * FROM tbl_product WHERE status = 1", nativeQuery = true)</text>
+
+    <text x="25" y="375" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="#f87171">• <tspan font-weight="700">@Modifying &amp; @Transactional:</tspan> Bắt buộc phải có khi viết câu lệnh UPDATE / DELETE bằng @Query!</text>
+  </g>
+
+  <!-- Box 2: Pagination, Sorting & DTO Projection -->
+  <g transform="translate(550, 80)" filter="url(#qShadow)">
+    <rect width="500" height="430" rx="10" fill="#131c31" stroke="#253556" stroke-width="1.5" />
+    <rect width="500" height="34" rx="10" fill="#1e293b" />
+    <text x="20" y="23" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="700" fill="#34d399">📄 Phân Trang (Paging), Sắp Xếp (Sorting) &amp; DTO Projection</text>
+
+    <!-- PageRequest Box -->
+    <rect x="15" y="48" width="470" height="155" rx="8" fill="#0f172a" stroke="#334155" />
+    <text x="25" y="70" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="700" fill="#fbbf24">3. PageRequest &amp; Page&lt;T&gt; Object:</text>
+    <text x="25" y="93" font-family="'JetBrains Mono', monospace" font-size="11" fill="#38bdf8">// Tạo Pageable (Lưu ý: số trang tính từ 0)</text>
+    <text x="25" y="112" font-family="'JetBrains Mono', monospace" font-size="10.5" fill="#e2e8f0">Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "price"));</text>
+    <text x="25" y="132" font-family="'JetBrains Mono', monospace" font-size="10.5" fill="#e2e8f0">Page&lt;Product&gt; productPage = productRepository.findAll(pageable);</text>
+
+    <rect x="25" y="145" width="450" height="48" rx="6" fill="#1e293b" />
+    <text x="35" y="165" font-family="'JetBrains Mono', monospace" font-size="10" fill="#34d399">productPage.getContent();       // List dữ liệu thực</text>
+    <text x="35" y="182" font-family="'JetBrains Mono', monospace" font-size="10" fill="#38bdf8">productPage.getTotalElements(); // Tổng số bản ghi (vd: 125)</text>
+    <text x="280" y="182" font-family="'JetBrains Mono', monospace" font-size="10" fill="#fb923c">productPage.getTotalPages(); // Tổng số trang</text>
+
+    <!-- DTO Projection Box -->
+    <rect x="15" y="215" width="470" height="195" rx="8" fill="#1e1b4b" stroke="#6366f1" />
+    <text x="25" y="238" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="700" fill="#a5b4fc">4. DTO Projection (Tối Ưu Hiệu Năng Truy Vấn):</text>
+    <text x="25" y="260" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="#cbd5e1">Bản chất: Không load thừa hàng chục cột từ Database, chỉ lấy đúng các trường cần hiển thị lên giao diện (ví dụ: id, name, price, categoryName).</text>
+
+    <rect x="25" y="278" width="450" height="50" rx="6" fill="#0f172a" />
+    <text x="35" y="296" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" fill="#38bdf8">Cách 1: Interface-based Projection (Getter)</text>
+    <text x="35" y="315" font-family="'JetBrains Mono', monospace" font-size="10" fill="#e2e8f0">public interface ProductSummary { Long getId(); String getName(); }</text>
+
+    <rect x="25" y="338" width="450" height="60" rx="6" fill="#0f172a" />
+    <text x="35" y="356" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" fill="#34d399">Cách 2: Constructor Expression trong JPQL</text>
+    <text x="35" y="375" font-family="'JetBrains Mono', monospace" font-size="9.5" fill="#fde68a">@Query("SELECT new com.example.dto.ProductDTO(p.id, p.name, p.price) FROM Product p")</text>
+    <text x="35" y="392" font-family="'JetBrains Mono', monospace" font-size="9.5" fill="#cbd5e1">List&lt;ProductDTO&gt; getProductSummaries();</text>
+  </g>
+</svg>

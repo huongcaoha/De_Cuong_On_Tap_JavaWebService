@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 560" width="100%" height="100%">
+  <defs>
+    <linearGradient id="jpaBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0f1d" />
+      <stop offset="100%" stop-color="#161233" />
+    </linearGradient>
+    <linearGradient id="jpaHeader" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7c3aed" />
+      <stop offset="100%" stop-color="#db2777" />
+    </linearGradient>
+    <filter id="shadowBox" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="6" stdDeviation="5" flood-color="#000" flood-opacity="0.45" />
+    </filter>
+    <marker id="arrowPurp" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#c084fc" />
+    </marker>
+    <marker id="arrowRose" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#fb7185" />
+    </marker>
+    <marker id="arrowGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#34d399" />
+    </marker>
+  </defs>
+
+  <rect width="1080" height="560" rx="14" fill="url(#jpaBg)" stroke="#2a2550" stroke-width="2" />
+
+  <!-- Header -->
+  <rect x="30" y="20" width="1020" height="42" rx="8" fill="url(#jpaHeader)" />
+  <text x="50" y="47" font-family="'Plus Jakarta Sans', sans-serif" font-size="16" font-weight="800" fill="#ffffff">🏛️ VÒNG ĐỜI ENTITY (JPA ENTITY LIFECYCLE) &amp; CƠ CHẾ QUAN HỆ ORM</text>
+  <text x="760" y="47" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="700" fill="#fdf2f8">JPA Specification + Hibernate Engine</text>
+
+  <!-- Left: 4 Entity Lifecycle States -->
+  <g transform="translate(30, 80)" filter="url(#shadowBox)">
+    <rect width="580" height="440" rx="10" fill="#141a2e" stroke="#313f63" stroke-width="1.5" />
+    <rect width="580" height="34" rx="10" fill="#1e293b" />
+    <text x="20" y="23" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="700" fill="#c084fc">🔄 Vòng Đời 4 Trạng Thái Của Entity Trong Persistence Context</text>
+
+    <!-- State 1: Transient -->
+    <rect x="30" y="60" width="150" height="75" rx="8" fill="#1e293b" stroke="#94a3b8" stroke-width="2" />
+    <text x="105" y="85" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="800" fill="#f1f5f9" text-anchor="middle">NEW / TRANSIENT</text>
+    <text x="105" y="105" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="#cbd5e1" text-anchor="middle">Vừa khởi tạo bằng new</text>
+    <text x="105" y="122" font-family="'JetBrains Mono', monospace" font-size="10" fill="#94a3b8" text-anchor="middle">Chưa có ID, chưa vào DB</text>
+
+    <!-- Arrow Transient -> Managed -->
+    <path d="M 180 97 L 370 97" fill="none" stroke="#34d399" stroke-width="2.5" marker-end="url(#arrowGreen)" />
+    <text x="275" y="88" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" fill="#34d399" text-anchor="middle">persist() / save()</text>
+
+    <!-- State 2: Managed / Persistent -->
+    <rect x="380" y="55" width="170" height="90" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="2.5" />
+    <text x="465" y="80" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="800" fill="#a7f3d0" text-anchor="middle">MANAGED (PERSISTENT)</text>
+    <text x="465" y="100" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="#ecfdf5" text-anchor="middle">Đã có trong DB &amp; Session</text>
+    <text x="465" y="117" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" fill="#34d399" text-anchor="middle">⭐ Tự động Dirty-Checking</text>
+    <text x="465" y="133" font-family="'JetBrains Mono', monospace" font-size="9" fill="#a7f3d0" text-anchor="middle">setter() tự sinh lệnh UPDATE</text>
+
+    <!-- State 3: Detached -->
+    <rect x="380" y="220" width="170" height="85" rx="8" fill="#1e1b4b" stroke="#818cf8" stroke-width="2" />
+    <text x="465" y="245" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="800" fill="#c7d2fe" text-anchor="middle">DETACHED (Tách rời)</text>
+    <text x="465" y="265" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="#cbd5e1" text-anchor="middle">Đã có ID nhưng Session đóng</text>
+    <text x="465" y="285" font-family="'JetBrains Mono', monospace" font-size="9" fill="#a5b4fc" text-anchor="middle">Không còn tự động update</text>
+
+    <!-- Arrows Managed <-> Detached -->
+    <path d="M 430 145 L 430 210" fill="none" stroke="#818cf8" stroke-width="2" marker-end="url(#arrowPurp)" />
+    <text x="390" y="180" font-family="'JetBrains Mono', monospace" font-size="10" fill="#818cf8" text-anchor="middle">detach() / clear()</text>
+
+    <path d="M 500 210 L 500 155" fill="none" stroke="#34d399" stroke-width="2" marker-end="url(#arrowGreen)" />
+    <text x="540" y="180" font-family="'JetBrains Mono', monospace" font-size="10" fill="#34d399" text-anchor="middle">merge()</text>
+
+    <!-- State 4: Removed -->
+    <rect x="30" y="220" width="150" height="85" rx="8" fill="#4c0519" stroke="#f43f5e" stroke-width="2" />
+    <text x="105" y="245" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="800" fill="#fecdd3" text-anchor="middle">REMOVED (Đã xóa)</text>
+    <text x="105" y="265" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="#fda4af" text-anchor="middle">Được đánh dấu để DELETE</text>
+    <text x="105" y="285" font-family="'JetBrains Mono', monospace" font-size="9" fill="#fecdd3" text-anchor="middle">Sẽ xóa khỏi DB khi commit</text>
+
+    <!-- Arrow Managed -> Removed -->
+    <path d="M 390 145 L 180 230" fill="none" stroke="#fb7185" stroke-width="2" marker-end="url(#arrowRose)" />
+    <text x="270" y="175" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" fill="#fb7185" text-anchor="middle">remove() / delete()</text>
+
+    <!-- Explanation Box at bottom -->
+    <rect x="20" y="325" width="540" height="100" rx="8" fill="#0f172a" stroke="#334155" />
+    <text x="30" y="348" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="#fbbf24">⚡ CƠ CHẾ DIRTY CHECKING (CỰC HAY HỎI THI):</text>
+    <text x="30" y="370" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="#cbd5e1">Khi Entity đang ở trạng thái <tspan font-weight="700" fill="#34d399">MANAGED</tspan>, nếu ta gọi <tspan font-family="'JetBrains Mono', monospace" fill="#38bdf8">product.setPrice(99.0)</tspan>,</text>
+    <text x="30" y="390" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="#cbd5e1">Hibernate tự động so sánh snapshot cũ và mới. Khi kết thúc transaction, nó</text>
+    <text x="30" y="410" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" fill="#fcd34d"><tspan font-weight="700">TỰ SINH CÂU LỆNH UPDATE SQL</tspan> mà không cần gọi lại repository.save()!</text>
+  </g>
+
+  <!-- Right: Entity Relationships & Spring Data JPA Hierarchy -->
+  <g transform="translate(630, 80)" filter="url(#shadowBox)">
+    <rect width="420" height="440" rx="10" fill="#141a2e" stroke="#313f63" stroke-width="1.5" />
+    <rect width="420" height="34" rx="10" fill="#1e293b" />
+    <text x="20" y="23" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="700" fill="#38bdf8">🌳 Quan Hệ Entity &amp; Phân Cấp Interface JPA</text>
+
+    <!-- 4 Relationships -->
+    <rect x="15" y="48" width="390" height="155" rx="8" fill="#0f172a" stroke="#334155" />
+    <text x="25" y="70" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="700" fill="#fb7185">4 Loại Quan Hệ &amp; Từ Khóa Quan Trọng:</text>
+
+    <text x="25" y="93" font-family="'JetBrains Mono', monospace" font-size="11" fill="#38bdf8">• @OneToOne: <tspan font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="#cbd5e1">User &lt;---&gt; UserProfile (1-1)</tspan></text>
+    <text x="25" y="115" font-family="'JetBrains Mono', monospace" font-size="11" fill="#34d399">• @ManyToOne: <tspan font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="#cbd5e1">Product ---&gt; Category (Nhiều SP thuộc 1 DM - Bên giữ FK)</tspan></text>
+    <text x="25" y="137" font-family="'JetBrains Mono', monospace" font-size="11" fill="#a78bfa">• @OneToMany: <tspan font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="#cbd5e1">Category ---&gt; List&lt;Product&gt; (Bên không giữ FK: mappedBy)</tspan></text>
+    <text x="25" y="159" font-family="'JetBrains Mono', monospace" font-size="11" fill="#fbbf24">• @ManyToMany: <tspan font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="#cbd5e1">User &lt;---&gt; Role (Bảng trung gian @JoinTable)</tspan></text>
+    <text x="25" y="185" font-family="'JetBrains Mono', monospace" font-size="10" fill="#f43f5e">FetchType: LAZY (tải khi cần) vs EAGER (tải ngay lập tức).</text>
+
+    <!-- JPA Hierarchy Box -->
+    <rect x="15" y="215" width="390" height="210" rx="8" fill="#1e1b4b" stroke="#6366f1" />
+    <text x="25" y="238" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="700" fill="#c084fc">Sơ Đồ Phân Cấp Các Interface Trong Spring Data JPA:</text>
+
+    <!-- Node 1: Repository -->
+    <rect x="120" y="250" width="160" height="28" rx="6" fill="#312e81" stroke="#818cf8" />
+    <text x="200" y="268" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700" fill="#e0e7ff" text-anchor="middle">&lt;&lt;interface&gt;&gt; Repository</text>
+
+    <path d="M 200 278 L 200 292" fill="none" stroke="#818cf8" stroke-width="2" marker-end="url(#arrowPurp)" />
+
+    <!-- Node 2: CrudRepository -->
+    <rect x="110" y="295" width="180" height="28" rx="6" fill="#3730a3" stroke="#a5b4fc" />
+    <text x="200" y="313" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">CrudRepository (save, findById)</text>
+
+    <path d="M 200 323 L 200 338" fill="none" stroke="#a5b4fc" stroke-width="2" marker-end="url(#arrowPurp)" />
+
+    <!-- Node 3: PagingAndSortingRepository -->
+    <rect x="75" y="340" width="250" height="28" rx="6" fill="#4338ca" stroke="#c7d2fe" />
+    <text x="200" y="358" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">PagingAndSortingRepository</text>
+
+    <path d="M 200 368 L 200 382" fill="none" stroke="#c7d2fe" stroke-width="2" marker-end="url(#arrowPurp)" />
+
+    <!-- Node 4: JpaRepository -->
+    <rect x="65" y="385" width="270" height="30" rx="6" fill="#15803d" stroke="#4ade80" stroke-width="2" />
+    <text x="200" y="405" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="800" fill="#ffffff" text-anchor="middle">⭐ JpaRepository&lt;Entity, ID&gt;</text>
+  </g>
+</svg>
