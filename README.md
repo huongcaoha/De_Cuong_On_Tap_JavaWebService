@@ -119,12 +119,14 @@ Tài liệu ôn tập cấp tốc, tóm tắt lý thuyết trọng tâm và hư�
 ### 🏆 Mega Capstone Project: Enterprise Product & Auth REST Services (All-in-One)
 - Kiến trúc tích hợp doanh nghiệp hoàn chỉnh kết nối toàn bộ 8 Session từ Session 01 đến Session 11.
 - Kịch bản kiểm thử 8 bước chuẩn doanh nghiệp trên Postman.
+- **Tài liệu bài tập thực hành tổng hợp cuối kỳ đầy đủ:** Đã tích hợp trọn vẹn trong file [`BAI_TAP_TONG_HOP.md`](file:///d:/Tsubasa/Java_Web_Services/De_Cuong_On_Tap/BAI_TAP_TONG_HOP.md) gồm 4 phần: Mục tiêu kiến thức, Mô tả yêu cầu chi tiết (15 Endpoint + 4 Entity + Bảo mật JWT + Validation + Global Exception + Upload File), Kết quả mong muốn (Ma trận 12 kịch bản test Postman + Rubric chấm điểm thang 10) và Hướng dẫn nộp bài lên GitHub.
 
 ---
 
 ## 🚀 Hướng Dẫn Sử Dụng
 1. Nhấp đúp chuột vào file [`index.html`](file:///d:/Tsubasa/Java_Web_Services/De_Cuong_On_Tap/index.html) để mở trực tiếp trên trình duyệt web (Google Chrome, Microsoft Edge, Firefox, Cốc Cốc, Safari...).
 2. Bấm vào các Tab môn học trên thanh điều hướng để xem lý thuyết và thực hành từng Session.
-3. Tích chọn vào ô **"Đã ôn"** để hệ thống tự động ghi nhận và cập nhật thanh tiến độ học tập.
-4. Nhấn nút ☀️ / 🌙 ở góc trên bên phải để chuyển đổi giữa giao diện Sáng và Tối.
-5. Sử dụng file [`Java_Web_Services_Postman_Collection.json`](file:///d:/Tsubasa/Java_Web_Services/De_Cuong_On_Tap/Java_Web_Services_Postman_Collection.json) để import thẳng vào Postman và thực hiện kiểm thử theo hướng dẫn từng bài Lab.
+3. Xem bài tập thực hành lớn cuối kỳ tại [`BAI_TAP_TONG_HOP.md`](file:///d:/Tsubasa/Java_Web_Services/De_Cuong_On_Tap/BAI_TAP_TONG_HOP.md) và Tab **Mega Capstone Project** trên giao diện web.
+4. Tích chọn vào ô **"Đã ôn"** để hệ thống tự động ghi nhận và cập nhật thanh tiến độ học tập.
+5. Nhấn nút ☀️ / 🌙 ở góc trên bên phải để chuyển đổi giữa giao diện Sáng và Tối.
+6. Sử dụng file [`Java_Web_Services_Postman_Collection.json`](file:///d:/Tsubasa/Java_Web_Services/De_Cuong_On_Tap/Java_Web_Services_Postman_Collection.json) để import thẳng vào Postman và thực hiện kiểm thử theo hướng dẫn từng bài Lab.

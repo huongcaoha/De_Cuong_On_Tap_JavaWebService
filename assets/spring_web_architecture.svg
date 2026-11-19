@@ -50,7 +50,7 @@
   <text x="55" y="50" font-family="'Plus Jakarta Sans', sans-serif" font-size="16" font-weight="800" fill="#38bdf8">🌐 KIẾN TRÚC TỔNG QUAN HỆ THỐNG SPRING WEB SERVICES</text>
 
   <!-- Subtitle -->
-  <text x="530" y="50" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="600" fill="#94a3b8">Luồng dữ liệu: Client (Request) ➔ DispatcherServlet ➔ 3-Tier Layered Architecture ➔ Database</text>
+  <text x="520" y="49" font-family="'Plus Jakarta Sans', sans-serif" font-size="11.5" font-weight="600" fill="#94a3b8">Luồng dữ liệu: Client (Request) ➔ DispatcherServlet ➔ 3-Tier Layered Architecture ➔ DB</text>
 
   <!-- 1. CLIENT CONTAINER -->
   <g transform="translate(40, 95)" filter="url(#shadow)">
@@ -65,7 +65,7 @@
 
     <rect x="15" y="145" width="150" height="70" rx="8" fill="#0f172a" stroke="#334155" />
     <text x="90" y="175" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="700" fill="#38bdf8" text-anchor="middle">📱 Mobile Client</text>
-    <text x="90" y="197" font-family="'JetBrains Mono', monospace" font-size="11" fill="#94a3b8" text-anchor="middle">Flutter / iOS / Android</text>
+    <text x="90" y="197" font-family="'JetBrains Mono', monospace" font-size="9.5" fill="#94a3b8" text-anchor="middle">iOS / Android / Flutter</text>
 
     <rect x="15" y="230" width="150" height="70" rx="8" fill="#0f172a" stroke="#334155" />
     <text x="90" y="260" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="700" fill="#38bdf8" text-anchor="middle">🧪 API Test Tool</text>
@@ -114,8 +114,8 @@
     <text x="85" y="312" font-family="'JetBrains Mono', monospace" font-size="9" fill="#94a3b8" text-anchor="middle">DataBinder</text>
 
     <rect x="30" y="335" width="110" height="50" rx="6" fill="#1e293b" stroke="#34d399" />
-    <text x="85" y="357" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="700" fill="#34d399" text-anchor="middle">IoC &amp; DI Container</text>
-    <text x="85" y="375" font-family="'JetBrains Mono', monospace" font-size="9" fill="#94a3b8" text-anchor="middle">Bean Lifecycle (@Bean)</text>
+    <text x="85" y="356" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" fill="#34d399" text-anchor="middle">IoC &amp; DI Container</text>
+    <text x="85" y="374" font-family="'JetBrains Mono', monospace" font-size="8.5" fill="#94a3b8" text-anchor="middle">@Bean Lifecycle</text>
 
     <!-- Arrow from Dispatcher to Controller -->
     <path d="M 155 270 L 190 270" fill="none" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#arrow)" />
@@ -171,8 +171,8 @@
 
       <rect x="6" y="255" width="83" height="75" rx="5" fill="#0f172a" stroke="#334155" />
       <text x="47" y="278" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" fill="#34d399" text-anchor="middle">DTO Mapper</text>
-      <text x="47" y="300" font-family="'JetBrains Mono', monospace" font-size="9" fill="#cbd5e1" text-anchor="middle">Entity &lt;-&gt; DTO</text>
-      <text x="47" y="318" font-family="'JetBrains Mono', monospace" font-size="9" fill="#94a3b8" text-anchor="middle">File Upload</text>
+      <text x="47" y="300" font-family="'JetBrains Mono', monospace" font-size="8.5" fill="#cbd5e1" text-anchor="middle">Entity &lt;-&gt; DTO</text>
+      <text x="47" y="318" font-family="'JetBrains Mono', monospace" font-size="8.5" fill="#94a3b8" text-anchor="middle">File Upload</text>
     </g>
 
     <!-- Arrow Service -> Repository -->
@@ -242,20 +242,20 @@
   </g>
 
   <!-- Legend / Highlights at bottom -->
-  <g transform="translate(40, 525)">
-    <circle cx="10" cy="10" r="6" fill="#38bdf8" />
-    <text x="25" y="14" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="600" fill="#cbd5e1">Luồng Request (Vào)</text>
+  <g transform="translate(30, 525)">
+    <circle cx="10" cy="10" r="5" fill="#38bdf8" />
+    <text x="22" y="14" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600" fill="#cbd5e1">Request (Vào)</text>
 
-    <circle cx="170" cy="10" r="6" fill="#34d399" />
-    <text x="185" y="14" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="600" fill="#cbd5e1">Luồng Response (JSON Ra)</text>
+    <circle cx="150" cy="10" r="5" fill="#34d399" />
+    <text x="162" y="14" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600" fill="#cbd5e1">Response (Ra)</text>
 
-    <circle cx="370" cy="10" r="6" fill="#f87171" />
-    <text x="385" y="14" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="600" fill="#cbd5e1">Bảo Mật Security &amp; JWT Filter</text>
+    <circle cx="310" cy="10" r="5" fill="#f87171" />
+    <text x="322" y="14" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600" fill="#cbd5e1">Security &amp; JWT Filter</text>
 
-    <circle cx="610" cy="10" r="6" fill="#a855f7" />
-    <text x="625" y="14" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="600" fill="#cbd5e1">Spring Data JPA &amp; Hibernate ORM</text>
+    <circle cx="530" cy="10" r="5" fill="#a855f7" />
+    <text x="542" y="14" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600" fill="#cbd5e1">Spring Data JPA &amp; ORM</text>
 
-    <circle cx="880" cy="10" r="6" fill="#fbbf24" />
-    <text x="895" y="14" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="600" fill="#cbd5e1">IoC Container &amp; Bean Scope</text>
+    <circle cx="760" cy="10" r="5" fill="#fbbf24" />
+    <text x="772" y="14" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600" fill="#cbd5e1">IoC &amp; DI Container (Beans)</text>
   </g>
 </svg>

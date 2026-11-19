@@ -4126,6 +4126,370 @@ http.addFilterBefore(jwtFilterChain, <span class="syn-type">UsernamePasswordAuth
           </ul>
         </div>
       </div>
+
+      <!-- ===============================================================
+           BÀI TẬP THỰC HÀNH TỔNG HỢP CUỐI KỲ (TECHMART ENTERPRISE)
+           =============================================================== -->
+      <div id="capstone-assignment" class="lab-section" style="margin-top: 36px; border-left: 4px solid #ec4899;">
+        <div class="lab-badge-group">
+          <span class="lab-badge" style="background: linear-gradient(135deg, #f59e0b, #ef4444);">Đề Án Thực Hành Tổng Hợp Cuối Kỳ</span>
+          <span class="lab-time-badge">⏱️ Thời lượng: 15 - 20 giờ</span>
+        </div>
+        <h4 class="lab-title">Hệ Thống Backend RESTful Web Services: TechMart Enterprise</h4>
+        <p class="step-desc" style="font-size: 0.98rem; line-height: 1.6; margin-bottom: 24px;">
+          Bài tập thực hành tổng hợp toàn diện kết nối liền mạch 100% kiến thức từ <strong>Session 01 đến Session 11</strong> thành một sản phẩm Backend chuẩn doanh nghiệp (Production-ready). Sinh viên thực hiện đầy đủ 4 phần theo đề cương bên dưới.
+        </p>
+
+        <!-- PHẦN 1 -->
+        <div class="lab-step">
+          <div class="step-header">
+            <span class="step-num">1</span>
+            <h5 class="step-title">Mục Tiêu Kiến Thức Đạt Được</h5>
+          </div>
+          <ul class="key-points-list">
+            <li><strong>Kiến trúc &amp; IoC/DI (Session 01):</strong> Làm chủ luồng xử lý của <code>DispatcherServlet</code>, cơ chế Auto-configuration của Spring Boot 3 và nguyên lý Inversion of Control thông qua Constructor Injection chuẩn mực.</li>
+            <li><strong>Chuẩn hóa RESTful &amp; 3-Tier Layering (Session 02):</strong> Thiết kế URI danh từ số nhiều phân cấp (/categories/{id}/products), phối hợp chính xác HTTP Methods (GET, POST, PUT, DELETE) với HTTP Status Codes (200, 201, 204, 400, 401, 403, 404, 409).</li>
+            <li><strong>ORM &amp; Hibernate 6 (Session 04):</strong> Nắm vững 4 trạng thái Entity (Transient, Managed, Detached, Removed), Dirty Checking, cấu hình quan hệ 1-N (Category - Product) và N-N (User - Role), triệt tiêu lỗi lặp vô tận JSON với DTO hoặc @JsonIgnore.</li>
+            <li><strong>Truy vấn nâng cao &amp; Phân trang (Session 05):</strong> Viết Derived Queries, JPQL <code>@Query</code> tìm kiếm đa điều kiện, phân trang &amp; sắp xếp linh hoạt với <code>Pageable</code>, <code>PageRequest</code>, <code>Sort</code> và DTO Projections.</li>
+            <li><strong>Data Binding &amp; Bean Validation (Session 07):</strong> Kiểm soát toàn vẹn dữ liệu đầu vào với Jakarta Validation (<code>@Valid</code>, <code>@NotBlank</code>, <code>@Size</code>, <code>@Min</code>, <code>@Pattern</code>), chuẩn hóa phản hồi bằng Generic wrapper <code>DataResponse&lt;T&gt;</code>.</li>
+            <li><strong>Global Exception &amp; File Upload (Session 08):</strong> Xây dựng bộ bắt lỗi tập trung <code>@RestControllerAdvice</code> bắt trọn vẹn mọi ngoại lệ, xử lý upload <code>MultipartFile</code> lên Cloudinary CDN với kiểm tra MIME type và dung lượng an toàn.</li>
+            <li><strong>Bảo mật Spring Security 6 &amp; JWT (Session 10 &amp; 11):</strong> Băm mật khẩu một chiều BCrypt, cấu hình <code>SecurityFilterChain</code> Stateless, triển khai bộ lọc <code>OncePerRequestFilter</code> xác thực Bearer Token, phân quyền Role-based (ROLE_USER, ROLE_ADMIN).</li>
+          </ul>
+        </div>
+
+        <!-- PHẦN 2 -->
+        <div class="lab-step">
+          <div class="step-header">
+            <span class="step-num">2</span>
+            <h5 class="step-title">Mô Tả Về Bài Tập &amp; Yêu Cầu Chi Tiết</h5>
+          </div>
+          <p class="step-desc">
+            Xây dựng hệ sinh thái Backend RESTful Services cho nền tảng thương mại điện tử <strong>TechMart Enterprise</strong>. Hệ thống quản lý người dùng, phân quyền truy cập, quản lý danh mục và sản phẩm thiết bị công nghệ cao.
+          </p>
+
+          <h6 style="color: var(--text-main); font-weight: 700; margin: 16px 0 8px 0;">A. Mô hình 4 Thực thể JPA Entity cốt lõi:</h6>
+          <ul class="key-points-list">
+            <li><code>User</code> (id, username, email, password [BCrypt], fullName, phone, active, roles, createdAt).</li>
+            <li><code>Role</code> (id, name: ROLE_USER, ROLE_ADMIN). Quan hệ <code>@ManyToMany</code> với User qua bảng <code>user_roles</code>.</li>
+            <li><code>Category</code> (id, name, code, description, active, products). Quan hệ <code>@OneToMany(mappedBy="category")</code> với Product.</li>
+            <li><code>Product</code> (id, name, sku [unique], price, stockQuantity, description, imageUrl, category, createdAt, updatedAt). Quan hệ <code>@ManyToOne</code> với Category.</li>
+          </ul>
+
+          <h6 style="color: var(--text-main); font-weight: 700; margin: 16px 0 8px 0;">B. Bảng Ma trận 15 Endpoints &amp; Phân quyền hệ thống:</h6>
+          <div class="compact-table-wrap">
+            <table class="compact-table">
+              <thead>
+                <tr>
+                  <th>Method</th>
+                  <th>Endpoint URI</th>
+                  <th>Chức Năng Nghiệp Vụ</th>
+                  <th>Phân Quyền</th>
+                  <th>Status Trả Về</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="tag-badge http-post">POST</span></td>
+                  <td><code>/api/v1/auth/register</code></td>
+                  <td>Đăng ký tài khoản người dùng mới (@Valid RegisterRequest)</td>
+                  <td><span class="status-badge" style="background: rgba(34,197,94,0.15); color: #22c55e;">Public</span></td>
+                  <td>201 Created / 400 / 409</td>
+                </tr>
+                <tr>
+                  <td><span class="tag-badge http-post">POST</span></td>
+                  <td><code>/api/v1/auth/login</code></td>
+                  <td>Xác thực đăng nhập &amp; cấp phát JWT Bearer Token</td>
+                  <td><span class="status-badge" style="background: rgba(34,197,94,0.15); color: #22c55e;">Public</span></td>
+                  <td>200 OK / 401 Unauthorized</td>
+                </tr>
+                <tr>
+                  <td><span class="tag-badge http-get">GET</span></td>
+                  <td><code>/api/v1/auth/me</code></td>
+                  <td>Lấy thông tin tài khoản đang đăng nhập từ SecurityContext</td>
+                  <td><span class="status-badge" style="background: rgba(59,130,246,0.15); color: #3b82f6;">Authenticated</span></td>
+                  <td>200 OK / 401</td>
+                </tr>
+                <tr>
+                  <td><span class="tag-badge http-get">GET</span></td>
+                  <td><code>/api/v1/categories</code></td>
+                  <td>Lấy danh sách tất cả danh mục đang hoạt động</td>
+                  <td><span class="status-badge" style="background: rgba(34,197,94,0.15); color: #22c55e;">Public</span></td>
+                  <td>200 OK</td>
+                </tr>
+                <tr>
+                  <td><span class="tag-badge http-get">GET</span></td>
+                  <td><code>/api/v1/categories/{id}</code></td>
+                  <td>Xem chi tiết danh mục theo ID</td>
+                  <td><span class="status-badge" style="background: rgba(34,197,94,0.15); color: #22c55e;">Public</span></td>
+                  <td>200 OK / 404 Not Found</td>
+                </tr>
+                <tr>
+                  <td><span class="tag-badge http-post">POST</span></td>
+                  <td><code>/api/v1/categories</code></td>
+                  <td>Tạo mới danh mục sản phẩm</td>
+                  <td><span class="status-badge" style="background: rgba(239,68,68,0.15); color: #ef4444;">ROLE_ADMIN</span></td>
+                  <td>201 Created / 400 / 403</td>
+                </tr>
+                <tr>
+                  <td><span class="tag-badge http-put">PUT</span></td>
+                  <td><code>/api/v1/categories/{id}</code></td>
+                  <td>Cập nhật thông tin danh mục</td>
+                  <td><span class="status-badge" style="background: rgba(239,68,68,0.15); color: #ef4444;">ROLE_ADMIN</span></td>
+                  <td>200 OK / 400 / 403 / 404</td>
+                </tr>
+                <tr>
+                  <td><span class="tag-badge http-delete">DELETE</span></td>
+                  <td><code>/api/v1/categories/{id}</code></td>
+                  <td>Xóa danh mục theo ID</td>
+                  <td><span class="status-badge" style="background: rgba(239,68,68,0.15); color: #ef4444;">ROLE_ADMIN</span></td>
+                  <td>204 No Content / 403 / 404</td>
+                </tr>
+                <tr>
+                  <td><span class="tag-badge http-get">GET</span></td>
+                  <td><code>/api/v1/products</code></td>
+                  <td>Lấy danh sách sản phẩm phân trang mặc định</td>
+                  <td><span class="status-badge" style="background: rgba(34,197,94,0.15); color: #22c55e;">Public</span></td>
+                  <td>200 OK (PageResponse)</td>
+                </tr>
+                <tr>
+                  <td><span class="tag-badge http-get">GET</span></td>
+                  <td><code>/api/v1/products/{id}</code></td>
+                  <td>Xem chi tiết sản phẩm theo ID</td>
+                  <td><span class="status-badge" style="background: rgba(34,197,94,0.15); color: #22c55e;">Public</span></td>
+                  <td>200 OK / 404 Not Found</td>
+                </tr>
+                <tr>
+                  <td><span class="tag-badge http-get">GET</span></td>
+                  <td><code>/api/v1/products/search</code></td>
+                  <td><strong>Tìm kiếm nâng cao:</strong> keyword, minPrice, maxPrice, categoryId + PageRequest</td>
+                  <td><span class="status-badge" style="background: rgba(34,197,94,0.15); color: #22c55e;">Public</span></td>
+                  <td>200 OK (PageResponse)</td>
+                </tr>
+                <tr>
+                  <td><span class="tag-badge http-post">POST</span></td>
+                  <td><code>/api/v1/products</code></td>
+                  <td>Tạo mới sản phẩm (@Valid ProductCreateRequest)</td>
+                  <td><span class="status-badge" style="background: rgba(239,68,68,0.15); color: #ef4444;">ROLE_ADMIN</span></td>
+                  <td>201 Created / 400 / 403 / 404</td>
+                </tr>
+                <tr>
+                  <td><span class="tag-badge http-put">PUT</span></td>
+                  <td><code>/api/v1/products/{id}</code></td>
+                  <td>Cập nhật thông tin sản phẩm theo ID</td>
+                  <td><span class="status-badge" style="background: rgba(239,68,68,0.15); color: #ef4444;">ROLE_ADMIN</span></td>
+                  <td>200 OK / 400 / 403 / 404</td>
+                </tr>
+                <tr>
+                  <td><span class="tag-badge http-delete">DELETE</span></td>
+                  <td><code>/api/v1/products/{id}</code></td>
+                  <td>Xóa sản phẩm theo ID</td>
+                  <td><span class="status-badge" style="background: rgba(239,68,68,0.15); color: #ef4444;">ROLE_ADMIN</span></td>
+                  <td>204 No Content / 403 / 404</td>
+                </tr>
+                <tr>
+                  <td><span class="tag-badge http-post">POST</span></td>
+                  <td><code>/api/v1/products/{id}/image</code></td>
+                  <td><strong>Upload ảnh sản phẩm:</strong> Tiếp nhận MultipartFile, tải lên Cloudinary</td>
+                  <td><span class="status-badge" style="background: rgba(239,68,68,0.15); color: #ef4444;">ROLE_ADMIN</span></td>
+                  <td>200 OK (URL ảnh HTTPS) / 400 / 403</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- PHẦN 3 -->
+        <div class="lab-step">
+          <div class="step-header">
+            <span class="step-num">3</span>
+            <h5 class="step-title">Kết Quả Mong Muốn (Deliverables &amp; Test Matrix)</h5>
+          </div>
+          <p class="step-desc">
+            Sản phẩm hoàn chỉnh phải vượt qua 100% bộ 12 kịch bản kiểm thử tích hợp trên Postman và tuân thủ bảng điểm nghiệm thu (Rubric Thang 10).
+          </p>
+
+          <h6 style="color: var(--text-main); font-weight: 700; margin: 16px 0 8px 0;">A. Bảng Ma Trận 12 Kịch Bản Kiểm Thử Postman:</h6>
+          <div class="compact-table-wrap">
+            <table class="compact-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Kịch Bản Test</th>
+                  <th>Method &amp; URL</th>
+                  <th>Dữ Liệu Đầu Vào</th>
+                  <th>Kết Quả Mong Đợi</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>Đăng ký tài khoản mới</td>
+                  <td><code>POST /api/v1/auth/register</code></td>
+                  <td>JSON đúng chuẩn (username, email, pass >= 6 ký tự)</td>
+                  <td><strong>201 Created</strong>, trả về UserResponse (không có pass)</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Đăng ký sai validation</td>
+                  <td><code>POST /api/v1/auth/register</code></td>
+                  <td>Email sai định dạng, mật khẩu ngắn (&lt; 6)</td>
+                  <td><strong>400 Bad Request</strong>, errors chỉ rõ từng trường lỗi</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Đăng ký trùng username</td>
+                  <td><code>POST /api/v1/auth/register</code></td>
+                  <td>Username đã tồn tại trong DB</td>
+                  <td><strong>409 Conflict</strong>, báo tài khoản đã được sử dụng</td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>Đăng nhập sai mật khẩu</td>
+                  <td><code>POST /api/v1/auth/login</code></td>
+                  <td>Sai password so với hash BCrypt</td>
+                  <td><strong>401 Unauthorized</strong>, từ chối cấp token</td>
+                </tr>
+                <tr>
+                  <td>5</td>
+                  <td>Đăng nhập thành công</td>
+                  <td><code>POST /api/v1/auth/login</code></td>
+                  <td>Username &amp; password hợp lệ</td>
+                  <td><strong>200 OK</strong>, trả về JWT Token &amp; role</td>
+                </tr>
+                <tr>
+                  <td>6</td>
+                  <td>Tạo Category không token</td>
+                  <td><code>POST /api/v1/categories</code></td>
+                  <td>Không gửi header Authorization</td>
+                  <td><strong>401 Unauthorized</strong>, chặn tại SecurityFilter</td>
+                </tr>
+                <tr>
+                  <td>7</td>
+                  <td>User thường tạo Category</td>
+                  <td><code>POST /api/v1/categories</code></td>
+                  <td>Gửi Token tài khoản ROLE_USER</td>
+                  <td><strong>403 Forbidden</strong>, chỉ ROLE_ADMIN mới có quyền</td>
+                </tr>
+                <tr>
+                  <td>8</td>
+                  <td>Admin tạo Category</td>
+                  <td><code>POST /api/v1/categories</code></td>
+                  <td>Gửi Token tài khoản ROLE_ADMIN</td>
+                  <td><strong>201 Created</strong>, lưu thành công vào MySQL</td>
+                </tr>
+                <tr>
+                  <td>9</td>
+                  <td>Admin tạo Product giá âm</td>
+                  <td><code>POST /api/v1/products</code></td>
+                  <td>Token Admin, nhưng price = -50000</td>
+                  <td><strong>400 Bad Request</strong>, bắt bởi @Min(1000)</td>
+                </tr>
+                <tr>
+                  <td>10</td>
+                  <td>Admin tạo Product chuẩn</td>
+                  <td><code>POST /api/v1/products</code></td>
+                  <td>Token Admin, SKU duy nhất, CategoryId đúng</td>
+                  <td><strong>201 Created</strong>, sinh Product mới</td>
+                </tr>
+                <tr>
+                  <td>11</td>
+                  <td>Tìm kiếm &amp; Phân trang</td>
+                  <td><code>GET /api/v1/products/search</code></td>
+                  <td>keyword=dell&amp;minPrice=10000000&amp;page=0&amp;size=5</td>
+                  <td><strong>200 OK</strong>, trả về PageResponse đúng cấu trúc</td>
+                </tr>
+                <tr>
+                  <td>12</td>
+                  <td>Upload ảnh quá dung lượng</td>
+                  <td><code>POST /api/v1/products/{id}/image</code></td>
+                  <td>Tệp ảnh &gt; 5MB hoặc sai định dạng MIME</td>
+                  <td><strong>400 Bad Request</strong>, bắt bởi Exception Handler</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h6 style="color: var(--text-main); font-weight: 700; margin: 16px 0 8px 0;">B. Thang Điểm Đánh Giá Nghiệm Thu (Rubric Thang 10):</h6>
+          <ul class="key-points-list">
+            <li><strong>Cấu trúc dự án &amp; Clean Code (1.0 đ):</strong> Phân tầng 3 lớp rành mạch, chuẩn Java naming conventions, 100% Constructor Injection.</li>
+            <li><strong>Database Schema &amp; JPA Entity (1.5 đ):</strong> 4 Entity đầy đủ, cấu hình quan hệ 1-N và N-N chuẩn xác, không bị đệ quy tuần hoàn JSON.</li>
+            <li><strong>Chuẩn hóa REST API &amp; Status Codes (1.5 đ):</strong> Đúng HTTP Methods, trả chuẩn mã 200, 201, 204, 400, 401, 403, 404, 409.</li>
+            <li><strong>Truy vấn nâng cao &amp; Phân trang JPQL (1.5 đ):</strong> Phương thức @Query tìm kiếm mềm dẻo đa điều kiện, phân trang Pageable không bị lỗi tràn trang.</li>
+            <li><strong>Bean Validation &amp; Global Exception (1.5 đ):</strong> Validate chặt chẽ DTO, xử lý ngoại lệ tập trung @RestControllerAdvice, chuẩn hóa DataResponse.</li>
+            <li><strong>Quản trị Tệp tin Upload File (1.0 đ):</strong> Validate MIME type, kiểm tra dung lượng &le; 5MB, upload thành công lên Cloudinary/ổ cứng và gắn URL vào Entity.</li>
+            <li><strong>Bảo mật Spring Security 6 &amp; JWT (1.5 đ):</strong> Mật khẩu băm BCrypt, Stateless Session, cấp phát JWT hợp lệ, xác minh Bearer Token qua OncePerRequestFilter, phân quyền Role-based nghiêm ngặt.</li>
+            <li><strong>Hồ sơ Nộp bài &amp; Postman Collection (0.5 đ):</strong> Đầy đủ README.md, .gitignore chuẩn, file .postman_collection.json chạy được ngay.</li>
+          </ul>
+        </div>
+
+        <!-- PHẦN 4 -->
+        <div class="lab-step">
+          <div class="step-header">
+            <span class="step-num">4</span>
+            <h5 class="step-title">Hướng Dẫn Nộp Bài Lên GitHub Chuẩn Quy Cách</h5>
+          </div>
+          <p class="step-desc">
+            Thực hiện tuần tự 5 bước dưới đây để nộp kho lưu trữ mã nguồn chuẩn mực lên GitHub:
+          </p>
+
+          <div class="code-wrapper">
+            <div class="code-header">
+              <span class="code-filename">1. Tạo file .gitignore tại thư mục gốc dự án</span>
+              <button class="btn-copy">📋 Sao chép</button>
+            </div>
+            <pre><code><span class="syn-comment"># Compiled files &amp; build artifacts</span>
+**/target/
+**/build/
+*.class
+*.jar
+*.war
+
+# IDE configuration files
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+
+# Environment &amp; Logs
+*.log
+application-local.properties
+.env
+.DS_Store</code></pre>
+          </div>
+
+          <div class="code-wrapper" style="margin-top: 14px;">
+            <div class="code-header">
+              <span class="code-filename">2. Chuỗi lệnh Git khởi tạo và đẩy mã nguồn lên GitHub</span>
+              <button class="btn-copy">📋 Sao chép</button>
+            </div>
+            <pre><code><span class="syn-comment"># Khởi tạo repository local</span>
+git init
+
+<span class="syn-comment"># Thêm toàn bộ mã nguồn hợp lệ</span>
+git add .
+
+<span class="syn-comment"># Tạo commit đầu tiên</span>
+git commit -m "feat: complete TechMart Enterprise RESTful Services with Spring Boot 3, JPA, Security and JWT"
+
+<span class="syn-comment"># Đổi tên nhánh sang main</span>
+git branch -M main
+
+<span class="syn-comment"># Gán URL repository GitHub của bạn (thay bằng link repo thật)</span>
+git remote add origin https://github.com/&lt;your-username&gt;/java-web-services-techmart-capstone.git
+
+<span class="syn-comment"># Đẩy mã nguồn lên GitHub</span>
+git push -u origin main</code></pre>
+          </div>
+
+          <ul class="key-points-list" style="margin-top: 16px;">
+            <li><strong>Xuất file Postman:</strong> Export bộ test collection ra file <code>TechMart_Enterprise.postman_collection.json</code> và lưu trực tiếp vào thư mục gốc của repository trước khi commit.</li>
+            <li><strong>Soạn file README.md:</strong> Ghi rõ thông tin Họ tên, Mã sinh viên, Lớp, hướng dẫn tạo Database MySQL, lệnh chạy <code>./mvnw spring-boot:run</code> và tài khoản test mặc định (<code>admin/123456</code>, <code>user/123456</code>).</li>
+            <li><strong>Kiểm tra chế độ truy cập:</strong> Mở link GitHub trên trình duyệt ẩn danh (Incognito) để kiểm tra repository ở chế độ <strong>Public</strong>, không bị lỗi 404 trước khi dán link nộp vào hệ thống của Học viện.</li>
+          </ul>
+        </div>
+      </div>
+
     </section>
 
   </main>
